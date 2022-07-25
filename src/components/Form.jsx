@@ -22,6 +22,7 @@ class Form extends Component {
           Name
           <input
             id="name"
+            name="cardName"
             value={ cardName }
             onChange={ onInputChange }
             type="text"
@@ -32,6 +33,7 @@ class Form extends Component {
           Description
           <input
             id="description"
+            name="cardDescription"
             value={ cardDescription }
             onChange={ onInputChange }
             type="textarea"
@@ -42,6 +44,7 @@ class Form extends Component {
           Attr01
           <input
             id="attr1"
+            name="cardAttr1"
             type="number"
             data-testid="attr1-input"
             value={ cardAttr1 }
@@ -52,6 +55,7 @@ class Form extends Component {
           Attr02
           <input
             id="attr2"
+            name="cardAttr2"
             type="number"
             data-testid="attr2-input"
             value={ cardAttr2 }
@@ -62,6 +66,7 @@ class Form extends Component {
           Attr03
           <input
             id="attr3"
+            name="cardAttr3"
             type="number"
             data-testid="attr3-input"
             value={ cardAttr3 }
@@ -71,6 +76,7 @@ class Form extends Component {
         <label htmlFor="imageUrl">
           <input
             id="imageUrl"
+            name="imageUrl"
             type="text"
             data-testid="image-input"
             value={ cardImage }
@@ -80,6 +86,7 @@ class Form extends Component {
         <label htmlFor="rarity">
           <select
             id="rarity"
+            name="cardRare"
             type="select"
             data-testid="rare-input"
             value={ cardRare }
@@ -93,7 +100,7 @@ class Form extends Component {
         <label htmlFor="supercheck">
           <input
             type="checkbox"
-            name="trunfo-input"
+            name="cardTrunfo"
             id="supercheck"
             data-testid="trunfo-input"
             checked={ cardTrunfo }

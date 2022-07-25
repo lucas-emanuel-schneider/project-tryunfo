@@ -3,13 +3,17 @@ import Form from './components/Form';
 import Card from './components/Card';
 
 class App extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      // cardName: '',
+    state = {
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '',
+      cardAttr2: '',
+      cardAttr3: '',
+      imageUrl: '',
+      cardRare: '',
+      cardTrunfo: false,
+      hasTrunfo: false,
     };
-  }
 
   onInputChange = ({ target }) => {
     const { name } = target;
@@ -23,32 +27,43 @@ class App extends React.Component {
   }
 
   render() {
+    const { cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      imageUrl,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+      isSaveButtonDisabled,
+    } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
         <Form
-          cardName="name"
-          cardDescription="description"
-          cardAttr1="Attr1"
-          cardAttr2="Attr2"
-          cardAttr3="Attr3"
-          cardImage="imageUrl"
-          cardRare="rarity"
-          cardTrunfo="supercheck"
-          hasTrunfo="hasTrunfo"
-          isSaveButtonDisabled="buttonDisable"
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ imageUrl }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card
-          cardName="name"
-          cardDescription="description"
-          cardAttr1="Attr1"
-          cardAttr2="Attr2"
-          cardAttr3="Attr3"
-          cardImage="imageUrl"
-          cardRare="rarity"
-          cardTrunfo="supercheck"
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ imageUrl }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
         />
       </div>
     );
