@@ -1,12 +1,13 @@
 import React from 'react';
 import Form from './components/Form';
+import Card from './components/Card';
 
 class App extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      cardName: '',
+      // cardName: '',
     };
   }
 
@@ -38,6 +39,16 @@ class App extends React.Component {
           isSaveButtonDisabled="buttonDisable"
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
+        />
+        <Card
+          cardName="name"
+          cardDescription="description"
+          cardAttr1="Attr1"
+          cardAttr2="Attr2"
+          cardAttr3="Attr3"
+          cardImage="imageUrl"
+          cardRare="rarity"
+          cardTrunfo="supercheck"
         />
       </div>
     );
