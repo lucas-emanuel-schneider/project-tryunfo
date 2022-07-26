@@ -13,20 +13,53 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       hasTrunfo: false,
+      isSaveButtonDisabled: true,
     };
 
   onInputChange = ({ target }) => {
     const { name } = target;
     const value = (target.type === 'checkbox') ? target.checked : target.value;
-    this.setState({
-      [name]: value,
-    }, () => {
-      this.validation();
-    });
-  }
+    this.setState(
+      {
+        [name]: value,
+      },
+      () => {
+        this.validation();
+      },
+    );
+  };
 
   validation = () => {
+    const maxValueAttr = 90;
+    const maxAttrAllSum = 210;
+    const {
+      cardName,
+      cardDescription,
+      imageUrl,
+      cardRare,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+    } = this.state;
 
+    const validationArr = [
+      cardName.length > 0,
+      cardDescription.length > 0,
+      imageUrl.length > 0,
+      cardRare.length > 0,
+      parseInt(cardAttr1, 10) <= maxValueAttr,
+      parseInt(cardAttr1, 10) >= 0,
+      parseInt(cardAttr2, 10) <= maxValueAttr,
+      parseInt(cardAttr2, 10) >= 0,
+      parseInt(cardAttr3, 10) <= maxValueAttr,
+      parseInt(cardAttr3, 10) >= 0,
+      (parseInt(cardAttr1, 10)
+      + parseInt(cardAttr2, 10)
+      + parseInt(cardAttr3, 10)) <= maxAttrAllSum,
+    ].every(Boolean);
+    this.setState({
+      isSaveButtonDisabled: !validationArr,
+    });
   }
 
   onSaveButtonClick = () => {

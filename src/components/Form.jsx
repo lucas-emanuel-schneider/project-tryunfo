@@ -115,6 +115,10 @@ class Form extends Component {
         >
           Salvar
         </button>
+        <h1>
+          HasTrunfo:
+          { hasTrunfo }
+        </h1>
       </form>
     );
   }
