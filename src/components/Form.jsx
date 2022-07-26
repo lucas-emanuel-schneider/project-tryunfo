@@ -98,14 +98,16 @@ class Form extends Component {
           </select>
         </label>
         <label htmlFor="supercheck">
-          <input
-            type="checkbox"
-            name="cardTrunfo"
-            id="supercheck"
-            data-testid="trunfo-input"
-            checked={ cardTrunfo }
-            onChange={ onInputChange }
-          />
+          {
+            hasTrunfo ? <p>Você já tem um Super Trunfo em seu baralho</p> : <input
+              type="checkbox"
+              name="cardTrunfo"
+              id="supercheck"
+              data-testid="trunfo-input"
+              checked={ cardTrunfo }
+              onChange={ onInputChange }
+            />
+          }
         </label>
         <button
           type="submit"
