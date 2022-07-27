@@ -10,10 +10,11 @@ class App extends React.Component {
     cardAttr2: '',
     cardAttr3: '',
     imageUrl: '',
-    cardRare: '',
+    cardRare: 'normal',
     cardTrunfo: false,
     hasTrunfo: false,
     isSaveButtonDisabled: true,
+    allCardsCreated: [],
   };
 
   onInputChange = ({ target }) => {
@@ -62,8 +63,39 @@ class App extends React.Component {
     });
   }
 
+  createdCard = () => {
+    const { cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      imageUrl,
+      cardRare,
+      cardTrunfo,
+    } = this.state;
+    const cardCreated = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      imageUrl,
+      cardRare,
+      cardTrunfo };
+    // const allCardsCreatedAtt = [];
+    // if (allCardsCreated.length > 0) {
+    //   const itemAntigo = allCardsCreated;
+    //   allCardsCreatedAtt.push(itemAntigo);
+    // }
+    // allCardsCreatedAtt.push(cardCreated);
+    this.setState((prevState) => (
+      { allCardsCreated: [...prevState.allCardsCreated, cardCreated] }
+    ));
+  }
+
   onSaveButtonClick = (event) => {
     event.preventDefault();
+    this.createdCard();
     this.setState({
       cardName: '',
       cardDescription: '',
@@ -71,7 +103,7 @@ class App extends React.Component {
       cardAttr2: '0',
       cardAttr3: '0',
       imageUrl: '',
-      cardRare: '',
+      cardRare: 'normal',
     }, () => {
       const { cardTrunfo } = this.state;
       if (cardTrunfo) {
@@ -93,6 +125,7 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
+      allCardsCreated,
     } = this.state;
     return (
       <div>
@@ -121,6 +154,21 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        {
+          allCardsCreated.map((card) => (
+            <Card
+              key={ card.cardName }
+              cardName={ card.cardName }
+              cardDescription={ card.cardDescription }
+              cardAttr1={ card.cardAttr1 }
+              cardAttr2={ card.cardAttr2 }
+              cardAttr3={ card.cardAttr3 }
+              cardImage={ card.imageUrl }
+              cardRare={ card.cardRare }
+              cardTrunfo={ card.cardTrunfo }
+            />
+          ))
+        }
       </div>
     );
   }
