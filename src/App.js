@@ -82,12 +82,6 @@ class App extends React.Component {
       imageUrl,
       cardRare,
       cardTrunfo };
-    // const allCardsCreatedAtt = [];
-    // if (allCardsCreated.length > 0) {
-    //   const itemAntigo = allCardsCreated;
-    //   allCardsCreatedAtt.push(itemAntigo);
-    // }
-    // allCardsCreatedAtt.push(cardCreated);
     this.setState((prevState) => (
       { allCardsCreated: [...prevState.allCardsCreated, cardCreated] }
     ));
